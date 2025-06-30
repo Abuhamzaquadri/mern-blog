@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RizCoin - Next Generation Crypto Token</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #f39c12, #e74c3c);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Token Stats */
+        .stats {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        /* Tokenomics */
+        .tokenomics {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .tokenomics-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pie-chart {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #f39c12 0deg 144deg,
+                #e74c3c 144deg 216deg,
+                #3498db 216deg 288deg,
+                #2ecc71 288deg 360deg
+            );
+            position: relative;
+        }
+
+        .pie-chart::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 50%;
+        }
+
+        .chart-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .token-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .token-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        /* Roadmap */
+        .roadmap {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #8360c3 0%, #2ebf91 100%);
+        }
+
+        .roadmap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #f39c12;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 45%;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #f39c12;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        /* Buy Section */
+        .buy-section {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        .buy-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .price-display {
+            font-size: 3rem;
+            color: #f39c12;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .payment-method {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .connect-wallet {
+            background: linear-gradient(45deg, #f39c12, #e74c3c);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .connect-wallet:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #f39c12;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buy Modal Styles */
+        .buy-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .buy-modal-content {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .buy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .buy-header h2 {
+            color: white;
+            margin: 0;
+        }
+
+        .close-btn {
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #f39c12;
+        }
+
+        .buy-body {
+            padding: 2rem;
+        }
+
+        .exchange-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .exchange-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .exchange-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .exchange-header h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .exchange-rate {
+            background: rgba(243, 156, 18, 0.2);
+            color: #f39c12;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .currency-section {
+            margin-bottom: 1rem;
+        }
+
+        .currency-section label {
+            color: white;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .currency-input {
+            display: flex;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: border-color 0.3s ease;
+        }
+
+        .currency-input:focus-within {
+            border-color: #f39c12;
+        }
+
+        .currency-input input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+        }
+
+        .currency-input input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .currency-selector {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem;
+        }
+
+        .currency-selector select {
+            background: transparent;
+            border: none;
+            color: white;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .currency-selector select option {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .balance {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .swap-button-container {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .swap-btn {
+            background: #f39c12;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .swap-btn:hover {
+            background: #e67e22;
+            transform: rotate(180deg);
+        }
+
+        .transaction-details {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .buy-confirm-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #f39c12, #e74c3c);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .buy-confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .buy-confirm-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        .wallet-section {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+        }
+
+        .wallet-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .wallet-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .wallet-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .wallet-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #f39c12;
+        }
+
+        .wallet-btn i {
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tokenomics-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 40px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .buy-modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .buy-body {
+                padding: 1rem;
+            }
+
+            .exchange-card {
+                padding: 1rem;
+            }
+
+            .wallet-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Particle Effect */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particle-float 6s infinite ease-in-out;
+        }
+
+        @keyframes particle-float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🚀 RizCoin</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#buy">Buy Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="particles"></div>
+        <div class="hero-content">
+            <h1 class="floating">🌙 RizCoin</h1>
+            <p>The Future of Decentralized Finance is Here</p>
+            <div class="cta-buttons">
+                <a href="#buy" class="btn btn-primary">Buy RizCoin</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card">
+                <i class="fas fa-coins"></i>
+                <div class="stat-number" id="totalSupply">1,000,000</div>
+                <div>Total Supply</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <div class="stat-number" id="holders">5,234</div>
+                <div>Token Holders</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <div class="stat-number" id="marketCap">$2.5M</div>
+                <div>Market Cap</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-fire"></i>
+                <div class="stat-number" id="burned">50,000</div>
+                <div>Tokens Burned</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="features-container">
+            <h2 class="section-title">Why Choose RizCoin?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure & Audited</h3>
+                    <p>Smart contracts audited by leading security firms. Your investment is protected by industry-standard security measures.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Deflationary Token</h3>
+                    <p>Built with automatic burning mechanism. Every transaction reduces total supply, increasing scarcity and value.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Reward System</h3>
+                    <p>Earn passive income by holding RizCoin. Get rewarded with every transaction on the network.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Multi-Chain</h3>
+                    <p>Available on Ethereum, BSC, and Polygon networks. Trade on your preferred blockchain ecosystem.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Transparent</h3>
+                    <p>All transactions are visible on blockchain. Complete transparency in tokenomics and fund allocation.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-community"></i>
+                    <h3>Strong Community</h3>
+                    <p>Join thousands of holders worldwide. Active community driving the project's growth and development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="tokenomics">
+        <div class="tokenomics-container">
+            <div>
+                <h2 class="section-title">Tokenomics</h2>
+                <div class="token-info">
+                    <div class="token-item">
+                        <div class="color-dot" style="background: #f39c12;"></div>
+                        <div>
+                            <strong>Liquidity Pool (40%)</strong>
+                            <p>400,000 tokens locked for trading</p>
+                        </div>
+                    </div>
+                    <div class="token-item">
+                        <div class="color-dot" style="background: #e74c3c;"></div>
+                        <div>
+                            <strong>Public Sale (20%)</strong>
+                            <p>200,000 tokens for community</p>
+                        </div>
+                    </div>
+                    <div class="token-item">
+                        <div class="color-dot" style="background: #3498db;"></div>
+                        <div>
+                            <strong>Development (20%)</strong>
+                            <p>200,000 tokens for development</p>
+                        </div>
+                    </div>
+                    <div class="token-item">
+                        <div class="color-dot" style="background: #2ecc71;"></div>
+                        <div>
+                            <strong>Marketing (20%)</strong>
+                            <p>200,000 tokens for promotion</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="pie-chart">
+                    <div class="chart-center">
+                        <h3>Riz</h3>
+                        <p>Distribution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="roadmap">
+        <div class="roadmap-container">
+            <h2 class="section-title">Roadmap</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Q1 2025 - Launch</h3>
+                        <p>Token creation, website launch, initial community building, and smart contract deployment.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Q2 2025 - Exchange Listings</h3>
+                        <p>DEX listings on Uniswap, PancakeSwap. CEX applications and partnerships with major exchanges.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Q3 2025 - DeFi Integration</h3>
+                        <p>Staking platform launch, yield farming opportunities, and DeFi protocol integrations.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Q4 2025 - NFT Marketplace</h3>
+                        <p>Launch of RizCoin NFT marketplace, exclusive collections, and community rewards program.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Section -->
+    <section id="buy" class="buy-section">
+        <div class="buy-container">
+            <h2 class="section-title">Buy RizCoin Now</h2>
+            <div class="price-display" id="currentPrice">₹1.00</div>
+            <p>Current Price: 1 Riz = 1 INR</p>
+            
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <i class="fab fa-ethereum"></i>
+                    <span>Ethereum</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-bitcoin"></i>
+                    <span>Bitcoin</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-coins"></i>
+                    <span>Polygon</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-rupee-sign"></i>
+                    <span>INR</span>
+                </div>
+            </div>
+            
+            <button class="connect-wallet" onclick="openBuyPage()">
+                <i class="fas fa-shopping-cart"></i> Buy Now
+            </button>
+            
+            <div style="margin-top: 2rem;">
+                <p><strong>Available on:</strong></p>
+                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
+                    <a href="#" class="btn btn-secondary">Uniswap</a>
+                    <a href="#" class="btn btn-secondary">PancakeSwap</a>
+                    <a href="#" class="btn btn-secondary">QuickSwap</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Page Modal -->
+    <div id="buyModal" class="buy-modal">
+        <div class="buy-modal-content">
+            <div class="buy-header">
+                <h2>Buy RizCoin</h2>
+                <span class="close-btn" onclick="closeBuyPage()">&times;</span>
+            </div>
+            
+            <div class="buy-body">
+                <div class="exchange-container">
+                    <div class="exchange-card">
+                        <div class="exchange-header">
+                            <h3>Exchange Tokens</h3>
+                            <div class="exchange-rate">1 Riz = 1 INR</div>
+                        </div>
+                        
+                        <div class="exchange-form">
+                            <!-- From Section -->
+                            <div class="currency-section">
+                                <label>From</label>
+                                <div class="currency-input">
+                                    <input type="number" id="fromAmount" placeholder="0.0" oninput="calculateExchange()">
+                                    <div class="currency-selector">
+                                        <select id="fromCurrency" onchange="updateExchangeRate()">
+                                            <option value="INR">INR</option>
+                                            <option value="ETH">Ethereum</option>
+                                            <option value="BTC">Bitcoin</option>
+                                            <option value="MATIC">Polygon</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="balance">Balance: <span id="fromBalance">0.00</span></div>
+                            </div>
+                            
+                            <!-- Swap Button -->
+                            <div class="swap-button-container">
+                                <button class="swap-btn" onclick="swapCurrencies()">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- To Section -->
+                            <div class="currency-section">
+                                <label>To</label>
+                                <div class="currency-input">
+                                    <input type="number" id="toAmount" placeholder="0.0" readonly>
+                                    <div class="currency-selector">
+                                        <select id="toCurrency" disabled>
+                                            <option value="RIZ">RizCoin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="balance">You will receive: <span id="toBalance">0.00 RIZ</span></div>
+                            </div>
+                            
+                            <!-- Transaction Details -->
+                            <div class="transaction-details">
+                                <div class="detail-row">
+                                    <span>Exchange Rate:</span>
+                                    <span id="exchangeRateDisplay">1 INR = 1 RIZ</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Network Fee:</span>
+                                    <span id="networkFee">~₹5</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>You'll Receive:</span>
+                                    <span id="finalAmount">0.00 RIZ</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Buy Button -->
+                            <button class="buy-confirm-btn" onclick="processPurchase()">
+                                <i class="fas fa-shopping-cart"></i>
+                                Buy RizCoin
+                            </button>
+                            
+                            <!-- Wallet Connection -->
+                            <div class="wallet-section">
+                                <h4>Connect Your Wallet</h4>
+                                <div class="wallet-options">
+                                    <button class="wallet-btn" onclick="connectMetaMask()">
+                                        <i class="fab fa-ethereum"></i>
+                                        MetaMask
+                                    </button>
+                                    <button class="wallet-btn" onclick="connectWalletConnect()">
+                                        <i class="fas fa-wallet"></i>
+                                        WalletConnect
+                                    </button>
+                                    <button class="wallet-btn" onclick="connectTrustWallet()">
+                                        <i class="fas fa-shield-alt"></i>
+                                        Trust Wallet
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-medium"></i></a>
+            </div>
+            <p>&copy; 2025 RizCoin. All rights reserved. | Built on Blockchain Technology</p>
+            <p><small>Contract Address: Abu Hamza Quadri 7250484008</small></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+
+        // Animate numbers
+        function animateNumbers() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.innerText.replace(/[^0-9]/g, ''));
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (counter.id === 'marketCap') {
+                        counter.innerText = '$' + (current / 1000000).toFixed(1) + 'M';
+                    } else {
+                        counter.innerText = Math.floor(current).toLocaleString();
+                    }
+                }, 20);
+            });
+        }
+
+        // Price ticker simulation
+        function updatePrice() {
+            const priceElement = document.getElementById('currentPrice');
+            // Keep INR price stable at 1 INR
+            priceElement.innerText = '₹1.00';
+            priceElement.style.color = '#f39c12';
+        }
+
+        // Exchange rates (demo values)
+        const exchangeRates = {
+            INR: 1,
+            ETH: 0.0004, // 1 INR = 0.0004 ETH (approx)
+            BTC: 0.000012, // 1 INR = 0.000012 BTC (approx)
+            MATIC: 0.9 // 1 INR = 0.9 MATIC (approx)
+        };
+
+        // Open buy page
+        function openBuyPage() {
+            document.getElementById('buyModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close buy page
+        function closeBuyPage() {
+            document.getElementById('buyModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Calculate exchange
+        function calculateExchange() {
+            const fromAmount = parseFloat(document.getElementById('fromAmount').value) || 0;
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            
+            // Convert to INR first, then to MOON (1 Riz = 1 INR)
+            let inrAmount = fromAmount;
+            if (fromCurrency !== 'INR') {
+                inrAmount = fromAmount / exchangeRates[fromCurrency];
+            }
+            
+            const moonAmount = inrAmount; // 1 INR = 1 Riz
+            
+            document.getElementById('toAmount').value = moonAmount.toFixed(6);
+            document.getElementById('toBalance').textContent = moonAmount.toFixed(6) + ' RIZ';
+            document.getElementById('finalAmount').textContent = moonAmount.toFixed(6) + ' RIZ';
+            
+            updateExchangeRateDisplay();
+        }
+
+        // Update exchange rate display
+        function updateExchangeRateDisplay() {
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const rate = exchangeRates[fromCurrency];
+            
+            if (fromCurrency === 'INR') {
+                document.getElementById('exchangeRateDisplay').textContent = '1 INR = 1 RIZ';
+            } else {
+                document.getElementById('exchangeRateDisplay').textContent = `1 ${fromCurrency} = ${(1/rate).toFixed(2)} RIZ`;
+            }
+            
+            // Update network fee based on currency
+            const fees = {
+                INR: '₹5',
+                ETH: '~0.005 ETH',
+                BTC: '~0.0001 BTC',
+                MATIC: '~0.01 MATIC'
+            };
+            document.getElementById('networkFee').textContent = fees[fromCurrency];
+        }
+
+        // Update exchange rate when currency changes
+        function updateExchangeRate() {
+            updateExchangeRateDisplay();
+            calculateExchange();
+        }
+
+        // Swap currencies
+        function swapCurrencies() {
+            // For this demo, we'll just clear the form since we only support buying MOON
+            document.getElementById('fromAmount').value = '';
+            document.getElementById('toAmount').value = '';
+            calculateExchange();
+        }
+
+        // Process purchase
+        function processPurchase() {
+            const fromAmount = document.getElementById('fromAmount').value;
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toAmount = document.getElementById('toAmount').value;
+            
+            if (!fromAmount || parseFloat(fromAmount) <= 0) {
+                alert('Please enter a valid amount');
+                return;
+            }
+            
+            // Demo transaction
+            const transactionId = 'RIZ' + Date.now();
+            alert(`Transaction Initiated! 🚀\n\nTransaction ID: ${transactionId}\nAmount: ${fromAmount} ${fromCurrency}\nYou'll receive: ${toAmount} MOON\n\nNote: This is a demo. In production, this would process the actual transaction.`);
+        }
+
+        // Wallet connection functions
+        function connectMetaMask() {
+            if (typeof window.ethereum !== 'undefined') {
+                alert('Connecting to MetaMask...\n\nThis is a demo. In production, this would connect to your MetaMask wallet.');
+            } else {
+                alert('Please install MetaMask extension to connect.');
+            }
+        }
+
+        function connectWalletConnect() {
+            alert('Connecting with WalletConnect...\n\nThis would open QR code scanner for mobile wallet connection.');
+        }
+
+        function connectTrustWallet() {
+            alert('Connecting to Trust Wallet...\n\nThis would connect to Trust Wallet if installed.');
+        }
+
+        // Connect wallet function
+        function connectWallet() {
+            if (typeof window.ethereum !== 'undefined') {
+                // MetaMask is available
+                alert('Connecting to MetaMask...\n\nThis is a demo. In production, this would connect to your actual wallet.');
+            } else {
+                alert('Please install MetaMask or another Web3 wallet to connect.');
+            }
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('buyModal');
+            if (event.target === modal) {
+                closeBuyPage();
+            }
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            animateNumbers();
+            setInterval(updatePrice, 3000); // Update price every 3 seconds
+            
+            // Initialize exchange calculations
+            updateExchangeRateDisplay();
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
